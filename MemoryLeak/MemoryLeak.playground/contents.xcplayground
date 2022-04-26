@@ -3,5 +3,6 @@
     <pages>
         <page name='MemoryLeakDelegates'/>
         <page name='Clojure'/>
+        <page name='weak&amp;unowned'/>
     </pages>
 </playground>

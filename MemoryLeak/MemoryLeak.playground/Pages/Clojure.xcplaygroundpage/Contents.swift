@@ -3,14 +3,24 @@
 import UIKit
 
 class TestClass {
-    var aButton: UIButton?
-    
+    var aClosure: (() -> ())?
+    var a: Int = 0
     func leakedFunction() {
-        var _ = { () -> () in }
+        aClosure = {
+            self.setA(newA: 1)
+        }
+        aClosure?()
     }
     
     func notLeakedFunction() {
-        var _ = { [weak self] () -> () in }
+        aClosure = { [weak self] in
+            self?.setA(newA: 2)
+        }
+        aClosure?()
+    }
+    
+    func setA(newA: Int) {
+        a = newA
     }
     
     deinit {
