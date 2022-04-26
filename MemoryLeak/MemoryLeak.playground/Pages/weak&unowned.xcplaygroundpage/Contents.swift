@@ -15,7 +15,7 @@ class SomeClass {
     func callWeakClosure() -> (() -> ()) {
         return { [weak self] in
             self?.someVar = 2
-            print("weak closure called")
+            print("weak closure called. is self nil: \(self == nil)")
             return
         }
     }
@@ -35,6 +35,3 @@ object1 = nil
 
 weakClosure()
 unownedClosure()
-
-
-
